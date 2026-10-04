@@ -6,13 +6,13 @@ The analysis examines whether recent **choice history, reward history, lagged se
 
 ## Analysis Overview
 
-The central idea is to represent previous-trial information using lagged predictors. For a behavioral variable \(X\), the analysis considers:
+The central idea is to represent previous-trial information using lagged predictors. For a behavioral variable $X$, the analysis considers:
 
-\[
+$$
 X_{t-1}, X_{t-2}, X_{t-3}, \ldots
-\]
+$$
 
-where \(X_{t-k}\) represents the value of that variable \(k\) trials before the current trial.
+where $X_{t-k}$ represents the value of that variable $k$ trials before the current trial.
 
 Separate lagged predictors are considered for:
 
@@ -23,7 +23,7 @@ Separate lagged predictors are considered for:
 
 The behavioral response is modeled using **logistic regression**. Because the response is binary, the logistic regression coefficients describe the association between each historical predictor and the probability of the behavioral response on the log-odds scale. Separate lagged predictors are entered into the logistic regression models to estimate how choice, reward, contrast, and block structure at different temporal lags relate to the current behavioral response.
 
-An important modeling choice is that **contrast on the current trial, \(C_t\), was not considered as an input predictor**. Current-trial contrast has an obviously strong and direct effect on the current behavioral response, so including it would dominate the model and obscure the history-dependent effects of interest. Therefore, contrast enters the analysis only through its lagged history terms, such as \(C_{t-1}, C_{t-2}, C_{t-3}, \ldots\).
+An important modeling choice is that **contrast on the current trial, $C_t$, was not considered as an input predictor**. Current-trial contrast has an obviously strong and direct effect on the current behavioral response, so including it would dominate the model and obscure the history-dependent effects of interest. Therefore, contrast enters the analysis only through its lagged history terms, such as $C_{t-1}, C_{t-2}, C_{t-3}, \ldots$.
 
 To assess the stability of the estimated history dependence across sessions, the analysis uses **cross-validation and bootstrapping**. These procedures allow the temporal structure of the effects to be examined across sessions rather than relying on a single session.
 
@@ -59,7 +59,7 @@ The **reward coefficients** show the largest absolute magnitude, with the strong
 
 The **choice-history coefficients** are smaller in magnitude than the reward coefficients and remain relatively modest across the tested lags. Their pattern indicates a weaker but persistent contribution of previous choices.
 
-The **contrast coefficients** show a different temporal profile. Their magnitude increases from lag 1 to lag 2 and then remains relatively stable across the later lags shown. Importantly, these contrast effects are based only on **lagged contrast predictors**; current-trial contrast \(C_t\) was not included as an input predictor because it has an obviously dominant effect on the current behavioral response.
+The **contrast coefficients** show a different temporal profile. Their magnitude increases from lag 1 to lag 2 and then remains relatively stable across the later lags shown. Importantly, these contrast effects are based only on **lagged contrast predictors**; current-trial contrast $C_t$ was not included as an input predictor because it has an obviously dominant effect on the current behavioral response.
 
 Because the figure displays **absolute coefficient values**, it describes the magnitude of the association rather than whether the relationship is positive or negative.
 
@@ -77,7 +77,7 @@ The **reward-history coefficients** show the largest magnitudes overall, particu
 
 The **choice-history coefficients** are smaller than the reward coefficients, with the largest values occurring at the first few lags. The distributions also show variability in the estimated magnitude across bootstrap samples.
 
-The **contrast coefficients** remain within a relatively narrower range across the tested lags, with contrast at \(t-2\) showing a comparatively larger coefficient magnitude than the other contrast lags. Current-trial contrast \(C_t\) is not shown because it was not used as an input predictor.
+The **contrast coefficients** remain within a relatively narrower range across the tested lags, with contrast at $t-2$ showing a comparatively larger coefficient magnitude than the other contrast lags. Current-trial contrast $C_t$ is not shown because it was not used as an input predictor.
 
 The **block** predictor is included as a separate feature and shows a coefficient magnitude within the range of the other non-reward predictors.
 
